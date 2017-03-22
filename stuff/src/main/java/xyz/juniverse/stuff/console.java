@@ -11,7 +11,7 @@ public class console
     private static final String TAG = "console";
 
     private static boolean debugMode = true;
-    public static void setDependancy(boolean mode)
+    public static void setDependency(boolean mode)
     {
         debugMode = mode;
     }

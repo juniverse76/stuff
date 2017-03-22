@@ -9,6 +9,12 @@ abstract public class Crypt
     private String encryptKey = null;
     private String decryptKey = null;
 
+    public Crypt(String encKey, String decKey)
+    {
+        this.encryptKey = encKey;
+        this.decryptKey = decKey;
+    }
+
     public String encrypt(String plainText)
     {
         return encrypt(plainText, encryptKey);

@@ -25,6 +25,10 @@ public class Aes128Crypt extends Crypt {
 	private final String cipherTransformation = "AES/CBC/PKCS5Padding";
 	private final String aesEncryptionAlgorithm = "AES";
 
+	public Aes128Crypt(String encKey, String decKey) {
+		super(encKey, decKey);
+	}
+
 	private byte[] decrypt(byte[] cipherText, byte[] key, byte[] initialVector)
 			throws NoSuchAlgorithmException, NoSuchPaddingException,
 			InvalidKeyException, InvalidAlgorithmParameterException,

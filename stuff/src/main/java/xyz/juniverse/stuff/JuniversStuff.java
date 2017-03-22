@@ -20,7 +20,7 @@ public class JuniversStuff
      */
     public static void init(Context context, boolean debugMode)
     {
-        console.setDependancy(debugMode);
+        console.setDependency(debugMode);
     }
 
     public static void initRPC(String serverUrl)
