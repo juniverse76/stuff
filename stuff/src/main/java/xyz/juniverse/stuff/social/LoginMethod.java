@@ -7,6 +7,8 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 
+import java.io.Serializable;
+
 import xyz.juniverse.stuff.console;
 
 /**
@@ -19,7 +21,8 @@ public class LoginMethod
 {
     private static final String PREF_LAST_LOGIN_METHOD = "loginMethod";
 
-    public static final int None = 0;
+    // todo 사실 얘들도 protocol 종속성이긴 하다.
+//    public static final int None = 0;
     public static final int Facebook = 1;
     public static final int GUEST = 2;
     public static final int GameCenter = 3;
@@ -44,13 +47,13 @@ public class LoginMethod
         public static LoginMethod getLastUsedMethod(FragmentActivity activity)
         {
             SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(activity.getBaseContext());
-            return create(preferences.getInt(PREF_LAST_LOGIN_METHOD, LoginMethod.None), activity);
+            return create(preferences.getInt(PREF_LAST_LOGIN_METHOD, LoginMethod.GUEST), activity);
         }
 
         public static LoginMethod getLastUsedMethod(AppCompatActivity activity)
         {
             SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(activity.getBaseContext());
-            return create(preferences.getInt(PREF_LAST_LOGIN_METHOD, LoginMethod.None), activity);
+            return create(preferences.getInt(PREF_LAST_LOGIN_METHOD, LoginMethod.GUEST), activity);
         }
     }
 
@@ -59,7 +62,7 @@ public class LoginMethod
         void onResult(boolean success, String message);
     }
 
-    private int methodId = None;
+    private int methodId = GUEST;
     FragmentActivity activity;
     @NonNull OnLoginResultListener listener;
 
@@ -78,11 +81,15 @@ public class LoginMethod
         return false;
     }
 
-    public int getId()
+    public int getPlatformId()
     {
         return methodId;
     }
 
+    public String getUserId()
+    {
+        return null;
+    }
 
 
 

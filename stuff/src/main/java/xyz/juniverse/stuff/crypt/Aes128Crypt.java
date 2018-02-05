@@ -1,6 +1,7 @@
 package xyz.juniverse.stuff.crypt;
 
-import org.apache.commons.codec.binary.Base64;
+//import org.apache.commons.codec.binary.Base64;
+import android.util.Base64;
 
 import java.io.UnsupportedEncodingException;
 import java.security.InvalidAlgorithmParameterException;
@@ -76,8 +77,9 @@ public class Aes128Crypt extends Crypt {
 		try {
 			byte[] plainTextbytes = plainText.getBytes(characterEncoding);
 			byte[] keyBytes = getKeyBytes(key);
-			result = Base64.encodeBase64String(encrypt(plainTextbytes,
-					keyBytes, keyBytes));
+			byte[] encrypted = encrypt(plainTextbytes, keyBytes, keyBytes);
+            result = Base64.encodeToString(encrypted, Base64.DEFAULT);
+//			result = Base64.encodeBase64String(encrypted);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -94,7 +96,8 @@ public class Aes128Crypt extends Crypt {
 	public String decrypt(String encryptedText, String key){
 		String result = null;
 		try {
-			byte[] cipheredBytes = Base64.decodeBase64(encryptedText);
+//			byte[] cipheredBytes = Base64.decodeBase64(encryptedText);
+			byte[] cipheredBytes = Base64.decode(encryptedText, Base64.DEFAULT);
 			byte[] keyBytes = getKeyBytes(key);
 			result = new String(decrypt(cipheredBytes, keyBytes, keyBytes), characterEncoding);
 		} catch (Exception e) {

@@ -9,28 +9,32 @@ import android.util.Log;
 public class console
 {
     private static final String TAG = "console";
+    private static boolean ENABLE = false;
 
-    private static boolean debugMode = true;
-    public static void setDependency(boolean mode)
-    {
-        debugMode = mode;
-    }
-
-    public static void i(Object... args)
-    {
-        if (!debugMode) return;
-        Log.d(TAG, makeLogText(args));
+    public static void enable() {
+        ENABLE = true;
     }
 
     public static void d(Object... args)
     {
-        if (!debugMode) return;
+        if (!ENABLE) return;
         Log.d(TAG, makeLogText(args));
+    }
+
+    public static void i(Object... args)
+    {
+        if (!ENABLE) return;
+        Log.i(TAG, makeLogText(args));
+    }
+
+    public static void w(Object... args)
+    {
+        if (!ENABLE) return;
+        Log.w(TAG, makeLogText(args));
     }
 
     public static void e(Object... args)
     {
-        if (!debugMode) return;
         Log.e(TAG, makeLogText(args));
     }
 
