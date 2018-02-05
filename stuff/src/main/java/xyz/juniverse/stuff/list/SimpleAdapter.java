@@ -85,4 +85,10 @@ public class SimpleAdapter extends RecyclerView.Adapter<SimpleHolder>
         this.list = list;
         notifyDataSetChanged();
     }
+
+    public Object getItem(int position) {
+        if (list == null || list.size() <= 0)
+            return null;
+        return list.get(position);
+    }
 }

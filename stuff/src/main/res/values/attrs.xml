@@ -1,0 +1,16 @@
+<resources>
+    <!--
+    <declare-styleable name="FocusGuideView">
+        <attr name="mode" format="enum">
+            <enum name="corners" value="0" />
+            <enum name="box" value="1" />
+            <enum name="boxes" value="2" />
+        </attr>
+    </declare-styleable>
+    -->
+    <declare-styleable name="ContextMenu">
+        <attr name="item_padding" format="dimension" />
+        <attr name="item_textSize" format="float" />
+        <attr name="item_textColor" format="color" />
+    </declare-styleable>
+</resources>
